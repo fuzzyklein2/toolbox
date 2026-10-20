@@ -1,0 +1,30 @@
+<select id="my-choice">
+    <option value="hw">hw</option>
+    <option value="peroxide">peroxide</option>
+    <option value="toolbox">toolbox</option>
+    <option value="cgi-bin">cgi-bin</option>
+</select>
+
+<div id="output"></div>
+
+<script>
+(() => {
+    const selection = document.getElementById("my-choice");
+
+    if (!selection) {
+        console.error("Couldn't find #my-choice");
+        return;
+    }
+
+    async function callCGI() {
+        const response = await fetch("http://localhost:5000/cgi-bin/project_dropdown.py");
+        const data = await response.text();
+        console.log(data);
+    }
+
+    selection.addEventListener("change", () => {
+        console.log("Selected:", selection.value);
+        callCGI();
+    });
+})();
+</script>
