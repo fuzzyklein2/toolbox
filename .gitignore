@@ -65,3 +65,6 @@ setup_venv
 bin/
 docs/scraps/
 docs/chats/
+
+*.code-workspace
+
